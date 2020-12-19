@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>New Years Day</title>
+    		<link href="lab_3.css" rel="stylesheet" type="text/css" media="all">
+    	</head>
+
+		<body>
+			<script>
+
+			//My New Years Function
+			function newYearsFunction() {
+
+				// Set New Years Date / time count
+				var newYearsDate = new Date("Jan 1, 2021 00:00:01").getTime();
+
+				// Update the count down every 1 second
+				var updateCount = setInterval(function() {
+
+  				// The current date / time
+  				var todayCurrentDate = new Date().getTime();
+
+  				// this is the time between current date and new years day
+  				var timeRemainingTillNY = newYearsDate - todayCurrentDate;
+
+  				// Time calculations for days, hours, minutes and seconds
+  				var days = Math.floor(timeRemainingTillNY / (1000 * 60 * 60 * 24));
+  				var hours = Math.floor((timeRemainingTillNY % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  				var minutes = Math.floor((timeRemainingTillNY % (1000 * 60 * 60)) / (1000 * 60));
+  				var seconds = Math.floor((timeRemainingTillNY % (1000 * 60)) / 1000);
+
+  				// Display the result in the element with id="demo"
+  				document.getElementById("output_one").innerHTML = days + "d " + hours + "h "
+  				+ minutes + "m " + seconds + "s ";
+
+  				// When countdown ends, message "Happy New Year!!!" posts
+				if (timeRemainingTillNY < 0) {
+    				clearInterval(updateCount);
+    				document.getElementById("output_one").innerHTML = "Happy New Years!!!";
+  					}
+					}, 1000);
+					}
+			</script>
+
+
+			<header>
+				<h1>When is the start of the New Year?</h1>
+			</header>
+
+			<div class="itemOne">
+			<!--Code for my button-->
+			<button id="ny_button" class="button" onclick="newYearsFunction()">Click to see Countdown!</button>
+			</div>
+
+			<div class="itemTwo">
+			<!--Code for the date output-->
+			<p id="output_one"></p>
+			</div>
+
+			<div class="itemThree">
+			<img src="New_Years3.jpg" alt="New Years Fireworks">
+			</div>
+
+			<footer>
+				<p><div>
+				Webmaster: Meghan Carlson<br>
+				Date: 10-6-20
+				</div>
+			</footer>
+
+		</body>
+	</html>
